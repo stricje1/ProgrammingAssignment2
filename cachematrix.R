@@ -1,3 +1,4 @@
+### Jeffrey Strickland ##
 ## This script is comprise of two functions related to computing matrix inverses.
 ## The first function, makeCasheMatrix(matrix), computes the inverse of a square matrix of full rank. If
 ## the matrix is not invertible (i.e., singular or computationally singilar),
