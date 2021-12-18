@@ -14,21 +14,22 @@
 ## inverse.
 
 ## This function computes a matrix inverse and pushes it to cache
+## Comprised of sub-functions that computate inverse and caches
 
-makeCacheMatrix <- function(x = matrix()) {
+makeCacheMatrix <- function(X = matrix()) {
   i <- NULL
-  set <- function(y) {
-    x <<- y
+  set <- function(y) {  # defines elements of the sub-function
+    X <<- y
     i <<- NULL
   }
-  get <- function() x
+  get <- function() X # returns matrix X as argument to the function
   setinverse <- function(inverse) i <<- inverse
   getinverse <- function() i
   message("matrix inverse in cache")
-  list(set = set,
-       get = get,
-       setinverse = setinverse,
-       getinverse = getinverse)
+  list(get = get,
+       set = set,
+       getinverse = getinverse,
+       setinverse = setinverse)
 }
 
 
@@ -36,15 +37,16 @@ makeCacheMatrix <- function(x = matrix()) {
 ## If the inverse has already been calculated, then he cacheSolve will retrieve
 ## the inverse from the cache. 
 
-cacheSolve <- function(x, ...) {
-  i <- x$getinverse()
+cacheSolve <- function(X, ...) {
+  # X is a square matrix & should have full rank
+  i <- X$getinverse()
   if (!is.null(i)) {
     message("retrieving cached data")
     return(i)
   }
-  data <- x$get()
-  i <- solve(data, ...)
-  x$setinverse(i)
+  data <- X$get() # gets matrix elements for solve to invert
+  i <- solve(data, ...) # computes the matrix inverse
+  X$setinverse(i)
   i
 }
 
