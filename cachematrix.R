@@ -1,16 +1,19 @@
-### Jeffrey Strickland ##
+################################################################################
+###                      R Programming Assignment #2                         ###
+###                          Jeffrey Strickland                              ###
+################################################################################
 ## This script is comprise of two functions related to computing matrix inverses.
-## The first function, makeCasheMatrix(matrix), computes the inverse of a square matrix of full rank. If
-## the matrix is not invertible (i.e., singular or computationally singilar),
-## makeCasheMatrix will return "Error in solve.default(data, ...) :" with a 
-## corresponding reason.
+## The first function, makeCasheMatrix(matrix), computes the inverse of a square 
+## matrix of full rank. If the matrix is not invertible (i.e., singular or 
+## computationally singilar), makeCasheMatrix will return "Error in 
+## solve.default(data, ...) :" with a corresponding reason.
 
 ## The second function, cacheSolve(matrix), retrieves a matrix from the cashe. If 
 ## the matrix is an inverse of a matrix computed by makeCasheMatrix, it retrieves
 ## the inverse matrix. Otherwise it retrieve the cashed matrix and computes its
 ## inverse.
 
-## Write a short comment describing this function
+## This function computes a matrix inverse and pushes it to cache
 
 makeCacheMatrix <- function(x = matrix()) {
   i <- NULL
@@ -30,9 +33,8 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 ## CasheSolve computes the inverse of a matrix. 
-## (The matrix must be square and invertible, i.e., full rank.)
 ## If the inverse has already been calculated, then he cacheSolve will retrieve
-## the inverse from the cache 
+## the inverse from the cache. 
 
 cacheSolve <- function(x, ...) {
   i <- x$getinverse()
